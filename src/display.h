@@ -4,7 +4,7 @@
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
 
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 
 // typedef struct {
 //     SDL_Renderer

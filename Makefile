@@ -8,8 +8,8 @@ OBJS = $(SRCS:.c=.o)
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET)
 
-sdl_cflags := $(shell sdl2-config --cflags sdl2)
-sdl_libs := $(shell sdl2-config --libs sdl2)
+sdl_cflags := $(shell pkg-config --cflags sdl3)
+sdl_libs := $(shell pkg-config --libs sdl3)
 override CFLAGS += $(sdl_cflags)
 override LIBS += $(sdl_libs)
 

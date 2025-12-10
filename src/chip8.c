@@ -71,24 +71,21 @@ uint8_t chip8_load_rom(Chip8* chip8, const char *filename) {
     return 0;
 }
 
-
-#define PIXEL(X, x, y) (X)->display[(y)*DISPLAY_WIDTH + (x)] //Dxyn Helper
-
 void DXYN(Chip8 *chip8, uint8_t x, uint8_t y, uint8_t n) {
     uint8_t x_pos = chip8->V[x];
     uint8_t y_pos = chip8->V[y];
 
     chip8->V[0xF] = 0; // Reset overlap register
 
-    for (uint8_t byte = 0; byte < n; byte++) {
-        uint8_t sprite = chip8->memory[chip8->I+byte];
+    for (uint8_t mem_byte = 0; mem_byte < n; mem_byte++) {
+        uint8_t sprite_byte = chip8->memory[chip8->I+mem_byte];
 
         for (uint8_t col = 0x80; col > 0x0; col >>= 1) {
-            uint8_t pixel_prev = PIXEL(chip8, x_pos, y_pos);
+            uint8_t pixel_prev = chip8->display[y_pos*DISPLAY_WIDTH + x_pos];
 
-            PIXEL(chip8, x_pos, y_pos) ^= sprite & col;
+            chip8->display[y_pos*DISPLAY_WIDTH + x_pos] ^= sprite_byte & col;
             
-            if (pixel_prev && (sprite & col)) // Pixel overflow
+            if (pixel_prev && (sprite_byte & col)) // Pixel overflow
                 chip8->V[0xF] = 1;
             
             x_pos = (x_pos + 1) % DISPLAY_WIDTH;

@@ -52,3 +52,7 @@ Mkfile.old
 dkms.conf
 
 roms/
+
+*.log
+.vscode/
+planning/
