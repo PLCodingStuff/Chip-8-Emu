@@ -56,3 +56,6 @@ roms/
 *.log
 .vscode/
 planning/
+
+display.c
+display.h
