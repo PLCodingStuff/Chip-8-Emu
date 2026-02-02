@@ -20,6 +20,9 @@ The current version runs in command line and is able to render images. The movem
    ```
 
 # Example Usage
+This is a demo of the IBM's Logo rendered in chip8, in command line.
+
 ```bash
 ./chip8 "IBM Logo.ch8"
 ```
+![IBM Logo Chip8](https://github.com/PLCodingStuff/Chip-8-Emu/blob/main/imgs/IBM%20Logo%20Demo.png)
