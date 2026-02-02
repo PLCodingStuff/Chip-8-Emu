@@ -57,5 +57,5 @@ roms/
 .vscode/
 planning/
 
-display.c
-display.h
+src/display.c
+src/display.h
