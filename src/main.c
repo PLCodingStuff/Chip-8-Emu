@@ -3,12 +3,17 @@
 
 #define TERMINATION_REPS 3
 
-int main(void) {
+int main(int argc, char* argv[]) {
     Chip8 emu = chip8_init();
 
     uint16_t opcode, prev_opcode = 0x0000;
     uint8_t opcode_reps = 0;
-    char *filename = "./roms/IBM Logo.ch8";
+    if (argc < 2) {
+        printf("Error: No ROM file specified.\n");
+        printf("Usage: %s <filename>\n", argv[0]);
+        return 1;
+    }
+    char *filename = argv[1];
 
     if (chip8_load_rom(&emu, filename))
         return 1;

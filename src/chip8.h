@@ -88,6 +88,7 @@ typedef struct {
     uint8_t keypad[KEYPAD_SIZE];
 
     uint8_t display[DISPLAY_WIDTH * DISPLAY_HEIGHT];
+    uint8_t screen_updated;
 } Chip8;
 
 // Chip-8 Initialization
@@ -100,12 +101,12 @@ bool chip8_load_rom(Chip8* emu, const char* filename);
 uint16_t chip8_fetch(Chip8* emu);
 
 // Decode the operation code of the instruction
-Instruction chip8_decode(uint16_t opcode);
+uint16_t chip8_cycle(Chip8 *chip8);
 
 bool chip8_execute(Chip8* emu, Instruction instruction);
 
 void chip8_quit(Chip8* emu);
 
-
+void chip8_print_display(Chip8* chip);
 
 #endif

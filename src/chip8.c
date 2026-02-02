@@ -45,7 +45,7 @@ Chip8 chip8_init() {
 }
 
 
-uint8_t chip8_load_rom(Chip8* chip8, const char *filename) {
+bool chip8_load_rom(Chip8* chip8, const char *filename) {
     /*
         Load a ROM file into the Chip-8 memory starting at the
         predefined start address.
